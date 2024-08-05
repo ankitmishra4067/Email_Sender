@@ -1,0 +1,7 @@
+
+∆
+java:S3577;"ëRename class "Send_Email_Service" to match the regular expression: '^((Test|IT)[a-zA-Z0-9_]+|[A-Z][a-zA-Z0-9_]*(Test|Tests|TestCase|IT|ITCase))$'b 69424aeced023fe2e3fc8d955e7c0b58h
+`
+java:S2925»"$Remove this use of "Thread.sleep()".8 ® –ç2b c9fab33e9458412c527c3fe8a13ee37dh
+Y
+java:S2925Í"$Remove this use of "Thread.sleep()".b c9fab33e9458412c527c3fe8a13ee37dh

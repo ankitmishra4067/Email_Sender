@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+  <meta charset='utf-8'>
+  <title>TestNG reports</title>
+
+    <link type="text/css" href="testng-reports1.css" rel="stylesheet" id="ultra" />
+    <link type="text/css" href="testng-reports.css" rel="stylesheet" id="retro" disabled="false"/>
+    <script type="text/javascript" src="jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="testng-reports.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type='text/javascript'>
+      google.load('visualization', '1', {packages:['table']});
+      google.setOnLoadCallback(drawTable);
+      var suiteTableInitFunctions = new Array();
+      var suiteTableData = new Array();
+    </script>
+    <!--
+      <script type="text/javascript" src="jquery-ui/js/jquery-ui-1.8.16.custom.min.js"></script>
+     -->
+  </head>
+
+  <body>    <div class="top-banner-root">
+      <span class="top-banner-title-font">Test results</span>
+      <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
+      <br/>
+      <span class="top-banner-font-1">1 suite</span>
+    </div> <!-- top-banner-root -->
+    <div class="navigator-root">
+      <div class="navigator-suite-header">
+        <span>All suites</span>
+        <a href="#" title="Collapse/expand all the suites" class="collapse-all-link">
+          <img src="collapseall.gif" class="collapse-all-icon">
+          </img> <!-- collapse-all-icon -->
+        </a> <!-- collapse-all-link -->
+      </div> <!-- navigator-suite-header -->
+      <div class="suite">
+        <div class="rounded-window">
+          <div class="suite-header light-rounded-window-top">
+            <a href="#" panel-name="suite-Default_suite" class="navigator-link">
+              <span class="suite-name border-passed">Default suite</span>
+            </a> <!-- navigator-link -->
+          </div> <!-- suite-header light-rounded-window-top -->
+          <div class="navigator-suite-content">
+            <div class="suite-section-title">
+              <span>Info</span>
+            </div> <!-- suite-section-title -->
+            <div class="suite-section-content">
+              <ul>
+                <li>
+                  <a href="#" panel-name="test-xml-Default_suite" class="navigator-link ">
+                    <span>C:\Users\ankit\AppData\Local\Temp\testng-eclipse-730289658\testng-customsuite.xml</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="testlist-Default_suite" class="navigator-link ">
+                    <span class="test-stats">1 test</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="group-Default_suite" class="navigator-link ">
+                    <span>0 groups</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="times-Default_suite" class="navigator-link ">
+                    <span>Times</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="reporter-Default_suite" class="navigator-link ">
+                    <span>Reporter output</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="ignored-methods-Default_suite" class="navigator-link ">
+                    <span>Ignored methods</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="chronological-Default_suite" class="navigator-link ">
+                    <span>Chronological view</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+              </ul>
+            </div> <!-- suite-section-content -->
+            <div class="result-section">
+              <div class="suite-section-title">
+                <span>Results</span>
+              </div> <!-- suite-section-title -->
+              <div class="suite-section-content">
+                <ul>
+                  <li>
+                    <span class="method-stats">10 methods,   10 passed</span>
+                  </li>
+                  <li>
+                    <span class="method-list-title passed">Passed methods</span>
+                    <span class="show-or-hide-methods passed">
+                      <a href="#" panel-name="suite-Default_suite" class="hide-methods passed suite-Default_suite"> (hide)</a> <!-- hide-methods passed suite-Default_suite -->
+                      <a href="#" panel-name="suite-Default_suite" class="show-methods passed suite-Default_suite"> (show)</a> <!-- show-methods passed suite-Default_suite -->
+                    </span>
+                    <div class="method-list-content passed suite-Default_suite">
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="Com.Email.Send_Email_Service" class="method navigator-link" hash-for-method="SendingEmail(7, [ankit.k@hashstudioz.com, , ankit, False status, I hope this message finds you well. Hello, ankit...)">SendingEmail(7, [ankit.k@hashstudioz.com, , ankit, False status, I hope this message finds you well. Hello, ankit...)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="Com.Email.Send_Email_Service" class="method navigator-link" hash-for-method="SendingEmail(9, [ankit.k@hashstudioz.com, , shyam, , Greetings, shyam. I hope you are doing well.
+
+We at HashStud...)">SendingEmail(9, [ankit.k@hashstudioz.com, , shyam, , Greetings, shyam. I hope you are doing well.
+
+We at HashStud...)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="Com.Email.Send_Email_Service" class="method navigator-link" hash-for-method="SendingEmail(1, [ankit.k@hashstudioz.com, , Ankit Mishra, already sended, Hello Ankit Mishra,
+I hope this message...)">SendingEmail(1, [ankit.k@hashstudioz.com, , Ankit Mishra, already sended, Hello Ankit Mishra,
+I hope this message...)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="Com.Email.Send_Email_Service" class="method navigator-link" hash-for-method="SendingEmail(3, [ankithsdf@hjdsgfsdf.sdfsdf, , kamal, Sheet1, I hope this message finds you well. Hello, kamal.
+
+...)">SendingEmail(3, [ankithsdf@hjdsgfsdf.sdfsdf, , kamal, Sheet1, I hope this message finds you well. Hello, kamal.
+
+...)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="Com.Email.Send_Email_Service" class="method navigator-link" hash-for-method="SendingEmail(5, [ankit.k@hashstudioz.com, , rohit, Sheet1, Greetings, rohit. I hope you are doing well.
+
+We at Ha...)">SendingEmail(5, [ankit.k@hashstudioz.com, , rohit, Sheet1, Greetings, rohit. I hope you are doing well.
+
+We at Ha...)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="Com.Email.Send_Email_Service" class="method navigator-link" hash-for-method="SendingEmail(8, [ankit.k@hashstudioz.com, , ram, Blank Status, Greetings, ram. I hope this communication finds yo...)">SendingEmail(8, [ankit.k@hashstudioz.com, , ram, Blank Status, Greetings, ram. I hope this communication finds yo...)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="Com.Email.Send_Email_Service" class="method navigator-link" hash-for-method="SendingEmail(2, [ankit.k@hashstudioz.com, , mohit sharma, False status, Hi mohit sharma, I hope you are doing wel...)">SendingEmail(2, [ankit.k@hashstudioz.com, , mohit sharma, False status, Hi mohit sharma, I hope you are doing wel...)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="Com.Email.Send_Email_Service" class="method navigator-link" hash-for-method="SendingEmail(6, [ankit.k@hashstudioz.com, , ankit, Blank Status, Hi ankit, I hope you are doing well as I write t...)">SendingEmail(6, [ankit.k@hashstudioz.com, , ankit, Blank Status, Hi ankit, I hope you are doing well as I write t...)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="Com.Email.Send_Email_Service" class="method navigator-link" hash-for-method="SendingEmail(4, [ankit.k@hashstudioz.com, , nikhil, Sheet1, Greetings, nikhil. I hope this communication finds yo...)">SendingEmail(4, [ankit.k@hashstudioz.com, , nikhil, Sheet1, Greetings, nikhil. I hope this communication finds yo...)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="Com.Email.Send_Email_Service" class="method navigator-link" hash-for-method="loginPage">loginPage</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content passed suite-Default_suite -->
+                  </li>
+                </ul>
+              </div> <!-- suite-section-content -->
+            </div> <!-- result-section -->
+          </div> <!-- navigator-suite-content -->
+        </div> <!-- rounded-window -->
+      </div> <!-- suite -->
+    </div> <!-- navigator-root -->
+    <div class="wrapper">
+      <div class="main-panel-root">
+        <div panel-name="suite-Default_suite" class="panel Default_suite">
+          <div class="suite-Default_suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">Com.Email.Send_Email_Service</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="SendingEmail(7, [ankit.k@hashstudioz.com, , ankit, False status, I hope this message finds you well. Hello, ankit...)">
+                  </a> <!-- SendingEmail(7, [ankit.k@hashstudioz.com, , ankit, False status, I hope this message finds you well. Hello, ankit...) -->
+                  <span class="method-name">SendingEmail</span>
+                  <span class="parameters">(7,[ankit.k@hashstudioz.com, , ankit, False status, I hope this message finds you well. Hello, ankit.
+
+Providing specialized solutions to companies just like yours, we at HashStudioz are experts in IoT consulting and product development. We focus on IoT hardware and software development, product engineering, and supply off-the-shelf devices like GPS trackers, data loggers, and IoT gateways. We have completed over 200 successful projects in the last 8 years. Manufacturing, solar plants, agriculture, and industrial automation are just a few of the sectors that our solutions serve.
+In order to simplify waste management procedures, we also provide WasteTrack, our cutting-edge platform.
+
+My opinion is that your company might greatly benefit from our solutions. Are you willing to talk about the ways in which we can fulfill your unique requirements? When you're ready, feel free to give me a call.
+
+eager to work with you when the chance presents itself., TRUE])</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="SendingEmail(9, [ankit.k@hashstudioz.com, , shyam, , Greetings, shyam. I hope you are doing well.
+
+We at HashStud...)">
+                  </a> <!-- SendingEmail(9, [ankit.k@hashstudioz.com, , shyam, , Greetings, shyam. I hope you are doing well.
+
+We at HashStud...) -->
+                  <span class="method-name">SendingEmail</span>
+                  <span class="parameters">(9,[ankit.k@hashstudioz.com, , shyam, , Greetings, shyam. I hope you are doing well.
+
+We at HashStudioz are experts in IoT product development and consulting, providing customized solutions to companies just like yours. We are experts in product engineering, IoT hardware and software development, and we have completed over 200 successful projects in the last eight years. We also offer off-the-shelf products like GPS trackers, data loggers, and IoT gateways. We provide solutions for manufacturing, agriculture, solar plants, and industrial automation, among other areas.
+We also provide WasteTrack, a cutting-edge technology that simplifies waste management procedures.
+
+I think your company could benefit greatly from our solutions. Are you willing to talk about how we might address your particular needs? Please feel free to call me whenever is most convenient.
+
+eager to work with you when the chance arises., FALSE])</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="SendingEmail(1, [ankit.k@hashstudioz.com, , Ankit Mishra, already sended, Hello Ankit Mishra,
+I hope this message...)">
+                  </a> <!-- SendingEmail(1, [ankit.k@hashstudioz.com, , Ankit Mishra, already sended, Hello Ankit Mishra,
+I hope this message...) -->
+                  <span class="method-name">SendingEmail</span>
+                  <span class="parameters">(1,[ankit.k@hashstudioz.com, , Ankit Mishra, already sended, Hello Ankit Mishra,
+I hope this message finds you well.
+
+At HashStudioz, we specialize in IoT consulting and product development, offering tailored solutions to businesses like yours. With over 200 successful projects in the past 8 years, we excel in Product Engineering, IoT Hardware and Software Development, and provide off-the-shelf products like IoT Gateways, Data Loggers, and GPS Trackers. Our solutions cater to industries such as Manufacturing, Solar Plants, Agriculture, and Industrial Automation.
+We also offer WasteTrack, our innovative platform designed to streamline waste management operations.
+
+I believe our solutions could add significant value to your business. Would you be open to discussing how we can meet your specific needs? I'm available for a call at your convenience.
+
+Looking forward to the opportunity to collaborate., TRUE])</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="SendingEmail(3, [ankithsdf@hjdsgfsdf.sdfsdf, , kamal, Sheet1, I hope this message finds you well. Hello, kamal.
+
+...)">
+                  </a> <!-- SendingEmail(3, [ankithsdf@hjdsgfsdf.sdfsdf, , kamal, Sheet1, I hope this message finds you well. Hello, kamal.
+
+...) -->
+                  <span class="method-name">SendingEmail</span>
+                  <span class="parameters">(3,[ankithsdf@hjdsgfsdf.sdfsdf, , kamal, Sheet1, I hope this message finds you well. Hello, kamal.
+
+Providing specialized solutions to companies just like yours, we at HashStudioz are experts in IoT consulting and product development. We focus on IoT hardware and software development, product engineering, and supply off-the-shelf devices like GPS trackers, data loggers, and IoT gateways. We have completed over 200 successful projects in the last 8 years. Manufacturing, solar plants, agriculture, and industrial automation are just a few of the sectors that our solutions serve.
+In order to simplify waste management procedures, we also provide WasteTrack, our cutting-edge platform.
+
+My opinion is that your company might greatly benefit from our solutions. Are you willing to talk about the ways in which we can fulfill your unique requirements? When you're ready, feel free to give me a call.
+
+eager to work with you when the chance presents itself., FALSE])</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="SendingEmail(5, [ankit.k@hashstudioz.com, , rohit, Sheet1, Greetings, rohit. I hope you are doing well.
+
+We at Ha...)">
+                  </a> <!-- SendingEmail(5, [ankit.k@hashstudioz.com, , rohit, Sheet1, Greetings, rohit. I hope you are doing well.
+
+We at Ha...) -->
+                  <span class="method-name">SendingEmail</span>
+                  <span class="parameters">(5,[ankit.k@hashstudioz.com, , rohit, Sheet1, Greetings, rohit. I hope you are doing well.
+
+We at HashStudioz are experts in IoT product development and consulting, providing customized solutions to companies just like yours. We are experts in product engineering, IoT hardware and software development, and we have completed over 200 successful projects in the last eight years. We also offer off-the-shelf products like GPS trackers, data loggers, and IoT gateways. We provide solutions for manufacturing, agriculture, solar plants, and industrial automation, among other areas.
+We also provide WasteTrack, a cutting-edge technology that simplifies waste management procedures.
+
+I think your company could benefit greatly from our solutions. Are you willing to talk about how we might address your particular needs? Please feel free to call me whenever is most convenient.
+
+eager to work with you when the chance arises., TRUE])</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="SendingEmail(8, [ankit.k@hashstudioz.com, , ram, Blank Status, Greetings, ram. I hope this communication finds yo...)">
+                  </a> <!-- SendingEmail(8, [ankit.k@hashstudioz.com, , ram, Blank Status, Greetings, ram. I hope this communication finds yo...) -->
+                  <span class="method-name">SendingEmail</span>
+                  <span class="parameters">(8,[ankit.k@hashstudioz.com, , ram, Blank Status, Greetings, ram. I hope this communication finds you in good health.
+
+At HashStudioz, we are experts in IoT product development and consulting, providing customized solutions to companies just like yours. We specialize in IoT Hardware and Software Development, have completed over 200 successful projects in the last 8 years, and offer off-the-shelf devices such as GPS trackers, data loggers, and IoT gateways. We offer solutions for manufacturing, agriculture, solar plants, and industrial automation, among other areas.
+Additionally, we provide WasteTrack, our cutting-edge technology that simplifies trash management procedures.
+
+I think your company might greatly benefit from our solutions. Are you willing to talk to us about how we might address your particular needs? At your convenience, feel free to give me a call.
+
+eager for the chance to work with you., TRUE])</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="SendingEmail(2, [ankit.k@hashstudioz.com, , mohit sharma, False status, Hi mohit sharma, I hope you are doing wel...)">
+                  </a> <!-- SendingEmail(2, [ankit.k@hashstudioz.com, , mohit sharma, False status, Hi mohit sharma, I hope you are doing wel...) -->
+                  <span class="method-name">SendingEmail</span>
+                  <span class="parameters">(2,[ankit.k@hashstudioz.com, , mohit sharma, False status, Hi mohit sharma, I hope you are doing well as I write to you.
+
+Our specialty at HashStudioz is IoT product development and consulting, and we provide customized solutions to companies just like yours. We are experts in Product Engineering, IoT Hardware and Software Development, and we offer off-the-shelf devices like GPS trackers, data loggers, and IoT gateways. We have completed over 200 successful projects in the last eight years. Industries like manufacturing, solar plants, agriculture, and industrial automation are served by our solutions.
+Additionally, we provide WasteTrack, a cutting-edge platform that we developed to optimize waste management procedures.
+
+I think your company may greatly benefit from our solutions. Would you be interested in talking about how we can address your particular needs? When it's convenient for you, feel free to phone me.
+
+eager to work with you if given the chance., TRUE])</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="SendingEmail(6, [ankit.k@hashstudioz.com, , ankit, Blank Status, Hi ankit, I hope you are doing well as I write t...)">
+                  </a> <!-- SendingEmail(6, [ankit.k@hashstudioz.com, , ankit, Blank Status, Hi ankit, I hope you are doing well as I write t...) -->
+                  <span class="method-name">SendingEmail</span>
+                  <span class="parameters">(6,[ankit.k@hashstudioz.com, , ankit, Blank Status, Hi ankit, I hope you are doing well as I write to you.
+
+Our specialty at HashStudioz is IoT product development and consulting, and we provide customized solutions to companies just like yours. We are experts in Product Engineering, IoT Hardware and Software Development, and we offer off-the-shelf devices like GPS trackers, data loggers, and IoT gateways. We have completed over 200 successful projects in the last eight years. Industries like manufacturing, solar plants, agriculture, and industrial automation are served by our solutions.
+Additionally, we provide WasteTrack, a cutting-edge platform that we developed to optimize waste management procedures.
+
+I think your company may greatly benefit from our solutions. Would you be interested in talking about how we can address your particular needs? When it's convenient for you, feel free to phone me.
+
+eager to work with you if given the chance., TRUE])</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="SendingEmail(4, [ankit.k@hashstudioz.com, , nikhil, Sheet1, Greetings, nikhil. I hope this communication finds yo...)">
+                  </a> <!-- SendingEmail(4, [ankit.k@hashstudioz.com, , nikhil, Sheet1, Greetings, nikhil. I hope this communication finds yo...) -->
+                  <span class="method-name">SendingEmail</span>
+                  <span class="parameters">(4,[ankit.k@hashstudioz.com, , nikhil, Sheet1, Greetings, nikhil. I hope this communication finds you in good health.
+
+At HashStudioz, we are experts in IoT product development and consulting, providing customized solutions to companies just like yours. We specialize in IoT Hardware and Software Development, have completed over 200 successful projects in the last 8 years, and offer off-the-shelf devices such as GPS trackers, data loggers, and IoT gateways. We offer solutions for manufacturing, agriculture, solar plants, and industrial automation, among other areas.
+Additionally, we provide WasteTrack, our cutting-edge technology that simplifies trash management procedures.
+
+I think your company might greatly benefit from our solutions. Are you willing to talk to us about how we might address your particular needs? At your convenience, feel free to give me a call.
+
+eager for the chance to work with you., TRUE])</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="loginPage">
+                  </a> <!-- loginPage -->
+                  <span class="method-name">loginPage</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Default_suite-class-passed -->
+        </div> <!-- panel Default_suite -->
+        <div panel-name="test-xml-Default_suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">C:\Users\ankit\AppData\Local\Temp\testng-eclipse-730289658\testng-customsuite.xml</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <pre>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE suite SYSTEM &quot;https://testng.org/testng-1.0.dtd&quot;&gt;
+&lt;suite name=&quot;Default suite&quot; guice-stage=&quot;DEVELOPMENT&quot;&gt;
+  &lt;test thread-count=&quot;5&quot; name=&quot;Default test&quot; verbose=&quot;2&quot;&gt;
+    &lt;classes&gt;
+      &lt;class name=&quot;Com.Email.Send_Email_Service&quot;/&gt;
+    &lt;/classes&gt;
+  &lt;/test&gt; &lt;!-- Default test --&gt;
+&lt;/suite&gt; &lt;!-- Default suite --&gt;
+            </pre>
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="testlist-Default_suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Tests for Default suite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <ul>
+              <li>
+                <span class="test-name">Default test (1 class)</span>
+              </li>
+            </ul>
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="group-Default_suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Groups for Default suite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="times-Default_suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Times for Default suite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="times-div">
+              <script type="text/javascript">
+suiteTableInitFunctions.push('tableData_Default_suite');
+function tableData_Default_suite() {
+var data = new google.visualization.DataTable();
+data.addColumn('number', 'Number');
+data.addColumn('string', 'Method');
+data.addColumn('string', 'Class');
+data.addColumn('number', 'Time (ms)');
+data.addRows(10);
+data.setCell(0, 0, 0)
+data.setCell(0, 1, 'SendingEmail')
+data.setCell(0, 2, 'Com.Email.Send_Email_Service')
+data.setCell(0, 3, 54420);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'loginPage')
+data.setCell(1, 2, 'Com.Email.Send_Email_Service')
+data.setCell(1, 3, 8451);
+data.setCell(2, 0, 2)
+data.setCell(2, 1, 'SendingEmail')
+data.setCell(2, 2, 'Com.Email.Send_Email_Service')
+data.setCell(2, 3, 51);
+data.setCell(3, 0, 3)
+data.setCell(3, 1, 'SendingEmail')
+data.setCell(3, 2, 'Com.Email.Send_Email_Service')
+data.setCell(3, 3, 7);
+data.setCell(4, 0, 4)
+data.setCell(4, 1, 'SendingEmail')
+data.setCell(4, 2, 'Com.Email.Send_Email_Service')
+data.setCell(4, 3, 3);
+data.setCell(5, 0, 5)
+data.setCell(5, 1, 'SendingEmail')
+data.setCell(5, 2, 'Com.Email.Send_Email_Service')
+data.setCell(5, 3, 2);
+data.setCell(6, 0, 6)
+data.setCell(6, 1, 'SendingEmail')
+data.setCell(6, 2, 'Com.Email.Send_Email_Service')
+data.setCell(6, 3, 2);
+data.setCell(7, 0, 7)
+data.setCell(7, 1, 'SendingEmail')
+data.setCell(7, 2, 'Com.Email.Send_Email_Service')
+data.setCell(7, 3, 2);
+data.setCell(8, 0, 8)
+data.setCell(8, 1, 'SendingEmail')
+data.setCell(8, 2, 'Com.Email.Send_Email_Service')
+data.setCell(8, 3, 1);
+data.setCell(9, 0, 9)
+data.setCell(9, 1, 'SendingEmail')
+data.setCell(9, 2, 'Com.Email.Send_Email_Service')
+data.setCell(9, 3, 1);
+window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
+return data;
+}
+              </script>
+              <span class="suite-total-time">Total running time: 1 minutes</span>
+              <div id="times-div-Default_suite">
+              </div> <!-- times-div-Default_suite -->
+            </div> <!-- times-div -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="reporter-Default_suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Reporter output for Default suite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="ignored-methods-Default_suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">0 ignored methods</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="chronological-Default_suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Methods in chronological order</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="chronological-class">
+              <div class="chronological-class-name">Com.Email.Send_Email_Service</div> <!-- chronological-class-name -->
+              <div class="configuration-suite before">
+                <span class="method-name">report</span>
+                <span class="method-start">0 ms</span>
+              </div> <!-- configuration-suite before -->
+              <div class="configuration-test before">
+                <span class="method-name">setup</span>
+                <span class="method-start">170 ms</span>
+              </div> <!-- configuration-test before -->
+              <div class="test-method">
+                <span class="method-name">loginPage</span>
+                <span class="method-start">23706 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">SendingEmail(1, [ankit.k@hashstudioz.com, , Ankit Mishra, already sended, Hello Ankit Mishra,
+I hope this message...)</span>
+                <span class="method-start">33047 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">SendingEmail(2, [ankit.k@hashstudioz.com, , mohit sharma, False status, Hi mohit sharma, I hope you are doing wel...)</span>
+                <span class="method-start">33056 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">SendingEmail(3, [ankithsdf@hjdsgfsdf.sdfsdf, , kamal, Sheet1, I hope this message finds you well. Hello, kamal.
+
+...)</span>
+                <span class="method-start">33060 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">SendingEmail(4, [ankit.k@hashstudioz.com, , nikhil, Sheet1, Greetings, nikhil. I hope this communication finds yo...)</span>
+                <span class="method-start">87482 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">SendingEmail(5, [ankit.k@hashstudioz.com, , rohit, Sheet1, Greetings, rohit. I hope you are doing well.
+
+We at Ha...)</span>
+                <span class="method-start">87486 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">SendingEmail(6, [ankit.k@hashstudioz.com, , ankit, Blank Status, Hi ankit, I hope you are doing well as I write t...)</span>
+                <span class="method-start">87489 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">SendingEmail(7, [ankit.k@hashstudioz.com, , ankit, False status, I hope this message finds you well. Hello, ankit...)</span>
+                <span class="method-start">87491 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">SendingEmail(8, [ankit.k@hashstudioz.com, , ram, Blank Status, Greetings, ram. I hope this communication finds yo...)</span>
+                <span class="method-start">87494 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">SendingEmail(9, [ankit.k@hashstudioz.com, , shyam, , Greetings, shyam. I hope you are doing well.
+
+We at HashStud...)</span>
+                <span class="method-start">87495 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-test after">
+                <span class="method-name">close</span>
+                <span class="method-start">87549 ms</span>
+              </div> <!-- configuration-test after -->
+              <div class="configuration-test after">
+                <span class="method-name">teardown</span>
+                <span class="method-start">92630 ms</span>
+              </div> <!-- configuration-test after -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+      </div> <!-- main-panel-root -->
+    </div> <!-- wrapper -->
+  </body>
+<script type="text/javascript" src="testng-reports2.js"></script>
+</html>

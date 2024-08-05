@@ -1,0 +1,450 @@
+package Com.Email;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+import java.util.Scanner;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.hc.client5.http.auth.Credentials;
+import org.apache.poi.EncryptedDocumentException;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.ss.usermodel.DataFormatter;
+import org.apache.poi.ss.usermodel.FormulaEvaluator;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFFormulaEvaluator;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.SkipException;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+import com.aventstack.extentreports.reporter.configuration.Theme;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.opencsv.CSVReader;
+import com.opencsv.exceptions.CsvValidationException;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class Send_Email_Service {
+	
+	 WebDriver driver;
+	 
+	 //before execution of the test this method will call 
+     @BeforeTest
+     public void setup() throws CsvValidationException {
+    	cred();
+		driver =launchChrome();
+	 }
+	
+     private boolean testFailed = false;
+	 private void logAndSkipTest(ExtentTest report, Exception e) {
+	        report.log(Status.SKIP, "Test skipped due to login failed" + e.getMessage());
+	        throw new SkipException("Log in Failed " + e.getMessage(), e);
+	 }
+     
+	 
+     @DataProvider(name="a")
+	 public Object[][] getdata() throws EncryptedDocumentException, IOException
+	  {
+		Object data[][] = getExcelData1(sheetName);
+		return data;	
+	  }
+     
+    
+     @Test(priority=1)
+     public void loginPage() throws Exception {
+     ExtentTest report= extent.createTest("login").assignAuthor("Ankit").assignCategory("Regression Testing").assignDevice("Chrome");
+  	 try {
+  	      if (driver != null ) {
+  	         testFailed=login(testFailed); 
+  	      if (testFailed) {
+  	    	 report.log(Status.FAIL,"Login Failed");
+  	      }
+  	         report.addScreenCaptureFromPath(capturescreenshot(driver));
+          }
+    }catch(Exception b) {
+    	  System.out.print("Login Failed "+b);
+  		  testFailed = true;
+   	      report.log(Status.FAIL,b);
+		  report.addScreenCaptureFromPath(capturescreenshot(driver));	  
+	      throw b;  
+    }  }
+     
+     
+   
+     @Test(dataProvider = "a", priority = 2)
+     public void SendingEmail(int rowIndex, String[] rowData) throws Exception {
+         String To = rowData[0];
+         String Cc = rowData[1];
+         String name = rowData[2];
+         String Subject = rowData[3];
+         String FinalContent = rowData[4];
+         String EmailStatus = rowData[5];
+
+     
+     try {
+   		  if(testFailed) {
+		    throw new SkipException(" Log in Failed ");
+          }else {  	
+        	     if(To != null && !To.trim().isEmpty() && 
+        	     Subject != null && !Subject.trim().isEmpty() && 
+        	     FinalContent != null && !FinalContent.trim().isEmpty()) {
+                 ExtentTest report= extent.createTest("Sending Email to "+To).assignAuthor("Ankit").assignCategory("Regression Testing").assignDevice("Chrome");
+        	       		   	
+        	     if (!EmailStatus.equalsIgnoreCase("True")) {
+        	        try {
+        	            //	compose button 
+        	             WebDriverWait wait0 = new WebDriverWait(driver, Duration.ofSeconds(30));
+                         WebElement navigate = wait0.until(
+        	                        ExpectedConditions.elementToBeClickable(By.xpath("//a[@class='compose' and @title='Create a new message']")));
+                         navigate.click();
+                         System.out.print("\nnavigated to Compose Message screen\n");		 
+        		 
+        	             //To button	 
+        	             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+     	                 WebElement to = wait.until(
+     	                           ExpectedConditions.elementToBeClickable(By.xpath("//div[@id='compose_to']//input[@role='combobox']")));
+     	                 to.click();
+     	                 to.sendKeys(To);
+     	     
+     	                 //Add CC +icon
+     	                 WebElement add_cc = driver.findElement(By.xpath("//a[@title='Add recipient (header)']"));
+     	                 add_cc.click();
+     	     
+     	                 //CC button
+     	                 WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(5));
+    	                 WebElement plus_cc_icon = wait1.until(
+    	                            ExpectedConditions.elementToBeClickable(By.xpath("//a[normalize-space()='Cc']")));
+    	                 plus_cc_icon.click();
+     	         	   
+    	                 //sending CC emails
+    	                 WebDriverWait wait3 = new WebDriverWait(driver, Duration.ofSeconds(5));
+    	                 WebElement ad_cc = wait3.until(
+    	                            ExpectedConditions.elementToBeClickable(By.xpath("//div[@id='compose_cc']//input[@role='combobox']")));
+    	                 ad_cc.click();
+    	                 ad_cc.sendKeys(Cc);   	    	    
+    	    
+    	                 //Subject
+     	                 WebElement subject = driver.findElement(By.xpath("//input[@id='compose-subject']"));
+     	                 subject.click();
+     	                 subject.sendKeys(Subject);
+     	     
+     	                 //Email Message body
+                         WebElement messageBody = driver.findElement(By.xpath("//textarea[@id='composebody' and @name='_message']"));           
+                         messageBody.sendKeys(FinalContent);
+     	      
+                         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));  
+                         WebElement signature = driver.findElement(By.xpath("//span[normalize-space()='Signature']"));
+                         signature.click();
+             
+                         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));  
+                         WebElement keep_formatting_button = driver.findElement(By.xpath("//div[@class='custom-control custom-switch']//label[@for='compose-keep-formatting']"));           
+                         keep_formatting_button.click();
+           
+                         //Send button
+                         WebElement send_button = driver.findElement(By.xpath("(//button[normalize-space()='Send'])[1]"));           
+                         send_button.click();
+     	     
+                         report.addScreenCaptureFromPath(capturescreenshot(driver));
+                         
+                         WebDriverWait wait4 =new WebDriverWait(driver, Duration.ofSeconds(25));
+                         try {
+                              WebElement refreshButton = wait4.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[normalize-space()='Refresh']")));
+                              System.out.print("\nMail sended Successfully to "+To);
+      		                  report.log(Status.PASS,"Mail sended Successfully to "+To);
+                   
+      		           
+      		                  updateTestResult(sheetName, rowIndex, true);
+                         
+                         } catch (TimeoutException e) {
+                              System.out.println("Mail not sent , waited for 25 seconds ");
+                              report.log(Status.FAIL, "Send button clicked but mail not sended. waited for 25 seconds");
+                              throw new NoSuchElementException("Element not found: " + e.getMessage());
+                         } 
+                              	
+                       
+		     
+		                int waittime = rand(time1,time2);		  
+                        int randomNumberInMilliseconds = waittime * 1000;
+                        System.out.print("\nNext email will be sent after "+waittime+" Seconds");
+		                Thread.sleep(randomNumberInMilliseconds);
+		    
+		     
+        	        } catch(Exception b) {
+      		            System.out.print("Mail not sended for "+To +" issue occured "+b);
+      		            report.log(Status.FAIL,"Mail not sended for"+To +" issue occured "+b);
+      		            report.addScreenCaptureFromPath(capturescreenshot(driver));
+      	                throw b;  }
+		     
+		     
+        	     }else {        		
+        		       report.log(Status.WARNING, "Email already Send found Status True in sheet");
+        	     }
+		     
+        	  } else {
+        		 ExtentTest report1= extent.createTest("Email will not be sent").assignAuthor("Ankit").assignCategory("Regression Testing").assignDevice("Chrome");
+        		 report1.log(Status.FAIL,"mandatory Columns should not be blank");
+        		 updateTestResult(sheetName, rowIndex, false);
+        	 }
+        	 }
+   		  
+	   } catch (SkipException e) {
+			logAndSkipTest(report, e); 
+	   } catch (Exception b) {
+		    System.out.print("Mail not sended for "+To +" issue occured "+b);
+		    report.log(Status.FAIL,"Mail not sended for"+To +" issue occured "+b);
+		    report.addScreenCaptureFromPath(capturescreenshot(driver));
+	        throw b;  }
+       }              	
+		            	
+		
+    @AfterTest
+  	public void close() throws InterruptedException
+     {
+  		Thread.sleep(5000);
+  		driver.quit();
+     }
+     
+     
+    public WebDriver launchChrome()  {
+   	  try {
+   	  	    WebDriverManager.chromedriver().setup();
+   	        ChromeOptions options = new ChromeOptions();
+   	       // options.addArguments("--headless");
+   	        options.addArguments("--disable-popup-blocking");
+   	        options.addArguments("--disable-gpu");
+   	        options.addArguments("--window-size=1920,1080");
+   	        options.addArguments("--force-device-scale-factor=0.75");
+   	        options.addArguments("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36");
+   	        options.setExperimentalOption("excludeSwitches", new String[] {"disable-popup-blocking"});      
+   	        driver = new ChromeDriver(options);    
+            driver.manage().window().maximize(); 
+            driver.get("https://webmail.hashstudioz.us/webmaillogout.cgi");
+   	        return driver;	    
+   	  } catch (WebDriverException e) {
+   	        System.err.println("An error occurred while initializing the WebDriver: " + e.getMessage());          
+      }
+   			return null;
+   	  }
+     
+     
+     
+    public static ExtentReports extent = new ExtentReports();
+ 	public static ExtentTest report;
+ 	ExtentSparkReporter spark = new ExtentSparkReporter("target/Report.html");
+ 	
+ 	@BeforeSuite
+ 	public void report() {
+ 		spark.config().setTheme(Theme.DARK);
+ 		spark.config().setDocumentTitle("Test Result");
+ 		extent.attachReporter(spark);
+ 	}
+ 	
+ 	
+ 	public static String capturescreenshot(WebDriver driver) throws IOException {
+ 		 TakesScreenshot screenshotTaker = (TakesScreenshot) driver;
+         java.io.File screenshot = screenshotTaker.getScreenshotAs(OutputType.FILE); 
+         String projectLocation = System.getProperty("user.dir");
+      	 System.out.print(projectLocation);
+      	 String screenshotPath =projectLocation+ "\\images\\"+System.currentTimeMillis()+".png";
+         FileUtils.copyFile(screenshot, new java.io.File(screenshotPath));      
+         return screenshotPath;
+ 	}
+
+ 	 @AfterTest
+ 	 public void teardown()
+ 	  {
+ 		extent.flush();
+ 	  }
+ 	
+ 	 public boolean login(boolean testFailed) {
+ 		try {  			
+ 	          WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+              WebElement username = wait.until(
+                  ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='user']")));
+              username.click();       
+              username.sendKeys(username_ID);
+ 	    	 
+ 	          driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20)); 
+ 	          WebElement password = driver.findElement(By.xpath("//input[@id='pass']"));   
+ 	          password.click();   
+ 	          password.sendKeys(password_ID);
+ 	 
+ 	          WebElement login = driver.findElement(By.xpath("//button[@id='login_submit']"));
+ 	          login.click();
+ 	    
+ 	          driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));  
+ 	          driver.findElement(By.xpath("//a[@class='compose' and @title='Create a new message']")); 	    	 
+ 	          System.out.print("\nLogged In \n");	  
+ 	}catch(Exception e )  {     		    	   	  
+ 		testFailed=true;	
+     }
+ 	return testFailed;  }
+ 	
+ 	
+ 	 
+ 	
+     
+     
+     public int rand(String time12, String time22) {
+     Random rand = new Random();
+     int min = Integer.parseInt(time12);
+     int max = Integer.parseInt(time22);
+     
+     // Generate a random number between min and max
+     int randomNumber = rand.nextInt((max - min) + 1) + min;
+     return randomNumber;
+     }
+ 	
+     
+     
+   
+     String username_ID = null;
+     String password_ID = null;
+     String inputStringFilePath = null;
+     String time1 = null;
+     String time2 = null;
+     String sheetName=null;
+     public void cred() throws CsvValidationException {
+         Scanner scanner = new Scanner(System.in);
+         System.out.println("\nPlease Enter Login Credential Filepath:");
+         String inputString = scanner.nextLine();
+
+         try {
+             // Provide the full path to the CSV file if necessary
+             File file = new File(inputString);
+             // Check if the file exists
+             if (!file.exists()) {
+                 System.out.println("File not found: " + file.getAbsolutePath());
+                 return;
+             }
+
+             // Read the CSV file and extract credentials
+             try (CSVReader csvReader = new CSVReader(new FileReader(file))) {
+                 String[] values;
+                 if ((values = csvReader.readNext()) != null) {
+                     username_ID = values[0]; // Assuming the username is in the first column
+                     password_ID = values[1]; // Assuming the password is in the second column
+                     time1 = values[2];
+                     time2 = values[3];
+                 }
+             }
+
+             // Print the credentials
+             System.out.println("Username: " + username_ID);
+             System.out.println("Password: " + password_ID);
+             System.out.println("Given time Duration : " +time1+ " Seconds" +" to "+ time2+" Seconds"); 
+             
+             System.out.println("\nPlease Enter Email Content Filepath:");
+             inputStringFilePath = scanner.nextLine();
+
+             System.out.println("\nWhich Sheet do you want to work on?  Please Enter Sheet Name ");
+             sheetName = scanner.nextLine();
+         } catch (IOException e) {
+             System.err.println("An error occurred while reading the file:");
+             e.printStackTrace();
+         }
+     }
+     
+     
+     
+  
+     
+     public Object[][] getExcelData1(String sheetName) throws IOException {
+    	 List<Object[]> rowDataList = new ArrayList<>();
+         try (FileInputStream inputStream = new FileInputStream(inputStringFilePath);
+              XSSFWorkbook workbook = new XSSFWorkbook(inputStream)) {
+              XSSFSheet sheet = workbook.getSheet(sheetName);
+              FormulaEvaluator evaluator = workbook.getCreationHelper().createFormulaEvaluator();
+              DataFormatter formatter = new DataFormatter();
+              if (sheet != null) {
+                 int totalRows = sheet.getPhysicalNumberOfRows(); // Use physical number of rows to skip entirely blank rows
+                 int totalCols = sheet.getRow(0).getLastCellNum();
+
+                 for (int i = 1; i < totalRows; i++) {  // Start from 1 to skip the header
+                     XSSFRow row = sheet.getRow(i);
+                     if (row == null || isRowEmpty(row, evaluator, formatter)) {
+                     continue; // Skip blank rows
+                     }
+
+                 String[] rowData = new String[totalCols];
+                 for (int j = 0; j < totalCols; j++) {
+                     XSSFCell cell = row.getCell(j);
+                     if (cell != null) {
+                        String cellValue = formatter.formatCellValue(cell, evaluator).trim();
+                        rowData[j] = cellValue;  // Adjust index for data array
+                     } else {
+                        rowData[j] = "";  // Handle null cells
+                     }
+                 }
+                     rowDataList.add(new Object[]{i, rowData}); // Save row index and data
+                 }
+              } else {
+                     System.out.println("Sheet not found in the Excel file.");
+              }
+         }
+         return rowDataList.toArray(new Object[0][0]);
+     }
+
+     private boolean isRowEmpty(Row row, FormulaEvaluator evaluator, DataFormatter formatter) {
+         for (int c = row.getFirstCellNum(); c < row.getLastCellNum(); c++) {
+             Cell cell = row.getCell(c);
+             if (cell != null) {
+                 String cellValue = formatter.formatCellValue(cell, evaluator).trim();
+                 if (!cellValue.isEmpty()) {
+                     return false;
+                 }
+             }
+         }
+         return true;
+     }
+
+     // Method to update the test result
+     public void updateTestResult(String sheetName, int rowIndex, boolean testResult) throws IOException {
+         try (FileInputStream inputStream = new FileInputStream(inputStringFilePath);
+              XSSFWorkbook workbook = new XSSFWorkbook(inputStream);
+              FileOutputStream outputStream = new FileOutputStream(inputStringFilePath)) {
+              XSSFSheet sheet = workbook.getSheet(sheetName);
+              XSSFRow row = sheet.getRow(rowIndex);
+              XSSFCell cell = row.getCell(5); 
+              if (cell == null) {
+                  cell = row.createCell(5);
+              }
+              cell.setCellValue(testResult);
+              workbook.write(outputStream);
+         }
+      }
+ 
+     
+}
